@@ -1,0 +1,78 @@
+@import '/src/styles/variables.scss';
+
+.header {
+  @include flexCenter;
+  width: 100vw;
+  height: 10vh;
+  border-bottom: 1px solid #ededed;
+
+  .headerContext {
+    @include flexCenter;
+    width: 98%;
+    height: 90%;
+
+    .logo {
+      @include flexCenter;
+      width: 10%;
+
+      .logoImage {
+        width: 100%;
+        cursor: pointer;
+      }
+    }
+
+    .storesButtons {
+      @include flexCustom(flex-start, center);
+      padding: 0 10%;
+      width: 90%;
+
+      .storeBtn {
+        @include btnTransParent;
+        padding: 10px 20px;
+        margin: 0 20px;
+        border-radius: 35px;
+        color: gray;
+        cursor: pointer;
+
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          color: black;
+        }
+
+        &:focus {
+          border: 2px solid rgb(17, 135, 207);
+        }
+      }
+    }
+  }
+}
+.platformHeader {
+  position: fixed;
+  z-index: 100;
+  .btnContainer {
+    display: flex;
+    padding: 10px;
+
+    .btnBox {
+      @include btnTransParent;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 35px;
+      margin-right: 5px;
+      background-color: white;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid rgb(17, 135, 207);
+      }
+      &:focus {
+        border: 2px solid rgb(17, 135, 207);
+      }
+
+      .btnText {
+        font-size: 12px;
+      }
+    }
+  }
+}

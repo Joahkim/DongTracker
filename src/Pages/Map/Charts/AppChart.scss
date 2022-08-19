@@ -1,0 +1,62 @@
+.appTitle {
+  text-align: end;
+  font-size: 13px;
+  color: gray;
+}
+.appDescription {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+
+  .appName {
+    margin: 10px 0 10px 0;
+    font-weight: bold;
+  }
+
+  .sales {
+    margin-top: 3px;
+    font-size: 10px;
+    color: gray;
+  }
+  margin-top: 3px;
+
+  .bemin {
+    text-align: left;
+    margin-top: 10px;
+  }
+  .yogiyo {
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+.rangeBar {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 90%;
+  height: 25%;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 13px;
+  color: white;
+
+  .bedalMinJockBar {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-align: center;
+    line-height: 250%;
+    width: 70%;
+    font-weight: bold;
+    background-color: #2ac1bc;
+  }
+
+  .yogiyoBar {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+    line-height: 250%;
+    width: 30%;
+    font-weight: bold;
+    background-color: #fa0050;
+  }
+}

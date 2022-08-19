@@ -1,0 +1,49 @@
+@import '/src/styles/variables.scss';
+
+.markerBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  &:hover {
+    .markerCountText {
+      background-color: rgb(255, 255, 255);
+      color: rgb(17, 135, 207);
+    }
+  }
+  .markerCountText {
+    min-width: 30px;
+    height: 30px;
+    padding: 0px 6px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 26px;
+    text-align: center;
+    border: 2px solid rgb(17, 135, 207);
+    border-radius: 30px;
+    background-color: rgb(17, 135, 207);
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+  }
+  .markerText {
+    height: 30px;
+    padding-left: calc(100% + 4px);
+    padding-right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    z-index: 1;
+    line-height: 28px;
+    color: rgb(17, 135, 207);
+    border: 1px solid rgb(17, 135, 207);
+    background-color: rgb(255, 255, 255);
+  }
+}

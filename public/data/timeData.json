@@ -1,0 +1,58 @@
+{
+  "result": [
+    {
+      "region": "서초동",
+      "count": 25,
+      "pay": 587300,
+      "platform_data": [
+        {
+          "platform": "배달의민족",
+          "count": 201,
+          "pay": 4852200
+        },
+        {
+          "platform": "요기요",
+          "count": 25,
+          "pay": 587300
+        }
+      ],
+      "weekday_data": [
+        {
+          "day": "월",
+          "count": 5,
+          "pay": 109000
+        },
+        {
+          "day": "화",
+          "count": 1,
+          "pay": 14800
+        },
+        {
+          "day": "수",
+          "count": 3,
+          "pay": 59100
+        },
+        {
+          "day": "목",
+          "count": 4,
+          "pay": 140500
+        },
+        {
+          "day": "금",
+          "count": 2,
+          "pay": 110200
+        },
+        {
+          "day": "토",
+          "count": 3,
+          "pay": 39000
+        },
+        {
+          "day": "일",
+          "count": 7,
+          "pay": 114700
+        }
+      ]
+    }
+  ]
+}

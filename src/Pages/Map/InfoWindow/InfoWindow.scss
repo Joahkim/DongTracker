@@ -1,0 +1,32 @@
+.infoWindowContainer {
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid rgba(17, 135, 207, 0.7);
+  background-color: white;
+  position: absolute;
+  top: -100px;
+  left: -60px;
+  width: auto;
+  z-index: 20;
+
+  .infoBox {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    min-width: 150px;
+
+    .infoTitle {
+      text-align: center;
+      color: rgb(17, 135, 207);
+      font-weight: 600;
+      padding-bottom: 10px;
+    }
+    .infoText1 {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      padding-bottom: 5px;
+    }
+    .infoText2 {
+      padding-top: 5px;
+    }
+  }
+}

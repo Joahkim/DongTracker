@@ -1,0 +1,80 @@
+.personModal {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid #379392;
+  border-radius: 10px;
+  transform: translateX(0%);
+  width: 25%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+
+  .personModalHeader {
+    position: absolute;
+    top: 10px;
+    color: #379392;
+    font-size: 18px;
+
+    .personModalHeaderText {
+      margin-left: 5px;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+  }
+  .personChartText {
+    position: absolute;
+    bottom: 110px;
+    color: #379392;
+    font-weight: 600;
+  }
+  .iconWrapper {
+    position: absolute;
+    padding: 0px 25px;
+    bottom: 5px;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+
+    .personIconContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .personIconBox {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: #67d5b5;
+
+        .personIconBoxFirst {
+          display: flex;
+
+          .icon {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #67d5b5;
+          }
+          .firstText {
+            font-weight: 700;
+            margin-left: 2px;
+          }
+        }
+
+        .personIconBoxSecond {
+          margin-left: 10px;
+
+          .secondText {
+            color: black;
+            margin-left: 5px;
+            justify-content: flex-end;
+          }
+        }
+      }
+    }
+  }
+}

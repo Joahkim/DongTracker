@@ -1,0 +1,35 @@
+.iconContainer {
+  // position: absolute;
+  // top: 20px;
+  // left: -50px;
+
+  .iconBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    min-width: 60px;
+    padding: 5px 8px;
+    border-radius: 15px;
+    border: 1px solid rgba(17, 135, 207, 0.7);
+    background-color: white;
+
+    &:hover {
+      background-color: rgb(17, 140, 207);
+      i {
+        color: white;
+      }
+      span {
+        color: white;
+      }
+    }
+    i {
+      font-size: 18px;
+      color: rgb(17, 135, 207);
+      padding-bottom: 5px;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+}
