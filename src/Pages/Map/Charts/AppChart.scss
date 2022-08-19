@@ -31,6 +31,7 @@
 }
 .rangeBar {
   display: flex;
+  overflow: hidden;
   margin: 0 auto;
   margin-top: 10px;
   width: 90%;
