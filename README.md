@@ -51,7 +51,7 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 
 #### 2. Trello
 
-<img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="300" height="200"/>
+<img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="500" height="200"/>
 
 4주차의 Sprint 목표와 업무 진행을 파악하기 위한 Tool로 Trello를 사용
 
@@ -69,7 +69,7 @@ QnA : Tech Lead에게 질의응답 소통 티켓
 
 #### 3. Notion
 
-![Daily Standup Meeting](https://user-images.githubusercontent.com/50426259/187820728-a900fdb3-1d83-438c-80c9-8876c0182bbf.png)
+<img src = "https://user-images.githubusercontent.com/50426259/187820728-a900fdb3-1d83-438c-80c9-8876c0182bbf.png" width="500" height="300"/>
 
 
 - 아침 standup meeting 상의한 내용을 모두 회의록에 기록
