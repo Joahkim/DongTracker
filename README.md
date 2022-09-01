@@ -150,6 +150,7 @@ const NaverMapAPI = () => {
     </NaverMap>
    </>
 ```
+---
 
 <br/>
 
@@ -163,8 +164,6 @@ const NaverMapAPI = () => {
 <br/>
 
 #### ⛳ 1배열 1꼭지점
-
-<br />
 
 👉 정확한 위치 즉, Marker에 대한 데이터
 
@@ -324,7 +323,7 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 ```
 결과물
 
-![](https://velog.velcdn.com/images/joahkim/post/2afda268-aa5f-466d-b3a5-23548c554588/image.gif)
+![image](https://user-images.githubusercontent.com/50426259/187875585-15ce3839-7637-414c-929a-9a897ae3cc74.png)
 
 ---
 
