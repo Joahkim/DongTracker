@@ -910,7 +910,7 @@ function NaverMapAPI({ dongData }) {
 
 > #### 결과
 
-<img src="https://velog.velcdn.com/images/joahkim/post/b1a14413-42db-4a25-a32e-449a14d0a1e5/image.gif" width="500" height="300"/>
+![](https://velog.velcdn.com/images/joahkim/post/b1a14413-42db-4a25-a32e-449a14d0a1e5/image.gif)
 
 ---
 
