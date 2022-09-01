@@ -1,8 +1,3 @@
-## 데모 영상
-
-👉 [영상 보러가기](https://youtu.be/VTUndrwlGDY)
-
-
 ## 프로젝트 소개 DongTracker
 
 <img src= "https://user-images.githubusercontent.com/50426259/187815562-0961ccb5-db34-40b7-8c7e-51313d8ab93b.png" width="200" height="100"/>
@@ -15,6 +10,12 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 (단, 기업협업으로 진행한 프로젝트이므로 인스턴스 만료 날짜는 정확하지 않습니다.)
   <br/>
 👉 [배포 주소](http://43.200.4.19:443/regions)
+
+  <br/>
+
+### 데모 영상
+
+👉 [영상 보러가기](https://youtu.be/VTUndrwlGDY)
 
 <br/>
 
@@ -51,7 +52,7 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 
 #### 2. Trello
 
-<img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="500" height="200"/>
+<img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="500" height="300"/>
 
 4주차의 Sprint 목표와 업무 진행을 파악하기 위한 Tool로 Trello를 사용
 
@@ -86,5 +87,7 @@ QnA : Tech Lead에게 질의응답 소통 티켓
 
 <br />
 
-# 기능 구현 상세 설명
+## :: 구현 사항 설명
+
+
 
