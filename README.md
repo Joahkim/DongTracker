@@ -332,7 +332,7 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 <br/>
 
 
-### 3. Naver Map 폴리곤, 폴리라인 React로 나타내기
+### 4. Naver Map 폴리곤, 폴리라인 React로 나타내기
 
 <br/>
 
@@ -395,7 +395,7 @@ polygon은 polyline 안을 채워주는 영역이고 style로 색상지정 가�
 지도에 폴리곤을 표시할 수 있게 되었다.
 테스트로 랜덤한 좌표를 작성해서 표현했다.
 
-![](https://velog.velcdn.com/images/joahkim/post/c9626ecf-9057-436b-93cf-0b44764b3c3d/image.png)
+<img src="https://velog.velcdn.com/images/joahkim/post/c9626ecf-9057-436b-93cf-0b44764b3c3d/image.png" width="500" height="300"/>
 
 <br/>
 
@@ -488,6 +488,244 @@ export default Map;
 
 <br/>
 
+'1배열 1꼭지점' 이라며 [[[[x축 좌표, y축 좌표]]]]로 GeoJson 파일 형식을 이용하여 지도에 Marker를 나타낼 수 있었다.
+
+Marker는 중심이 되는 좌표가 있다면 하나의 [[[[x축 좌표, y축 좌]표]]] 코드만 있어도 나타낼 수 있다.
+
+폴리곤과 폴리라인 (Polygon, Polyline)은 하나의 꼭지점들을 이어서 선을 그리고(폴리라인) 그 선의 내부 영역(폴리곤)을 스타일링 할 수 있다.
+
+**오늘의 작업**
+서울시 강남구, 서초구의 동을 폴리라인과 폴리곤으로 나타내기!
+
+강남구에는 압구정, 신사, 삼성, 대치, 역삼동 등이 소재하고 있으며
+서초구에는 방배, 서초, 반포동 등이 소재하고 있다.
+
+<br/>
+
+#### ⛳ 동의 경계선을 나타내는 폴리라인 좌표는 어떻게 구할까?
+
+프론트 엔드 입장으로 보면 백에서 보내주는 데이터를 잘 표현하기만 하면 된다. 하지만 도시의 공적인 데이터는 보통 공공API로부터 제공받고 있지 않을까 궁금하여 검색하기!
+
+구글에 '대한민국 법정동 및 행정동 좌표'라고 검색하면 JSON 파일을 제공하는 블로그 및 공공 데이터 관련 웹 페이지에서 찾을 수 있다.
+
+데이터는 백엔드에서 가공하여 대략 이런 형태이다.
+
+```js
+{
+  "result": [
+     {
+	    "region_code": 11680101,
+	    "ub_myeon_dong": "역삼동",
+        "total_count": 33,
+        "total_pay": 579400,
+        "x_coordinate": 37.500335,
+        "y_coordinate": 127.037596,
+        "coordinate": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    127.04898636795212,
+                    37.504515906845704
+                  ],
+                  [
+                    127.04920396473152,
+                    37.50405518396562
+                  ],
+                  [
+                    127.04984242979424,
+                    37.50270342726028
+                  ],
+                  [
+                    127.05048087185992,
+                    37.50135166680836
+                  ],
+                  [
+                    127.05054863257368,
+                    37.50120832588475
+                  ],
+		//나머지 좌표 데이터 생략
+```
+
+#### ⛳ 좌표 데이터의 양은 방대했다.
+막상 찾아보니 막대한 양의 배열 데이터를 보고 조금 막막했다.
+
+예를 들어, 방배동에 해당하는 폴리라인을 그리고 싶다면
+선과 선을 이어주는 꼭지점이 무수히 많이 필요하다. 해당 꼭지점이 그려지기 위해서는 하나의 배열이 필요하고 배열 안에는 두개의 요소가 필요하다.
+(x축과 y축)
+
+<img src="https://velog.velcdn.com/images/joahkim/post/aab51381-146e-4d07-9710-c0ad89c90a75/image.png" width="500" height="300"/>
+
+즉, 방배동 하나의 폴리라인을 그리기 위해서 약 300개가 넘는 배열을 받아야 한다.
+
+<br/>
+
+#### ⛳ Naver Map에서 폴리라인과 폴리곤을 나타내는 객체
+
+위의 링크에서 첨부된 지난 게시글에서 React로 naver map 폴리곤, 폴리라인 나타내는 형태에 대해 언급했다.
+
+```js
+ 	<Polyline
+        strokeColor="blue" //테두리 색상
+        strokeStyle="solid" //테두리 스타일
+        strokeWeight={1} //테두리 두께
+        path={[
+          new navermaps.LatLng(37.359924641705476, 127.1148204803467),
+          new navermaps.LatLng(37.36343797188166, 127.11486339569092),
+          new navermaps.LatLng(37.368520071054576, 127.11473464965819),
+        ]}
+      />
+          
+    <Polygon
+        fillColor="salmon" //바탕색
+        fillOpacity={0.35} //바탕색 투명도
+        paths={[
+          new navermaps.LatLng(37.359924641705476, 127.1148204803467),
+          new navermaps.LatLng(37.36343797188166, 127.11486339569092),
+          new navermaps.LatLng(37.368520071054576, 127.11473464965819),
+        ]}
+      />
+```
+
+폴리라인과 폴리곤은 각각 path와 paths 속성을 가지고 있다.
+
+`path = {[new navermaps.LatLng(x축 좌표, y축 좌표)]}`
+위의 식은 naver map에서 기본적으로 제공하는 좌표를 지도에 나타내는 객체이다.
+
+즉, `new navermaps.LatLng(x좌표 map 돌리기, y좌표 ==> map 돌리기)`
+
+<br/>
+
+#### ⛳ GeoJson의 배열을 벗기고 forEach()
+
+```js
+//목데이터 받아오기 위한 fetch 함수 작성
+
+import React, { useEffect, useState } from 'react';
+import {
+  RenderAfterNavermapsLoaded,
+  NaverMap,
+  Marker,
+  Polyline,
+  Polygon,
+} from 'react-naver-maps';
+import './Map.scss';
 
 
+function NaverMapAPI() {
+  const navermaps = window.naver.maps;
 
+  const [dongData, setDongData] = useState([]);
+
+
+  useEffect(() => {
+    fetch(
+      'data/DongData.json'
+    )
+      .then(res => res.json())
+      .then(data => {
+        setDongData(data.result);
+      });
+  }, []);
+
+  if (dongData.length === 0) return;
+모든 좌표 데이터는 dongData에 담겨있다.
+
+//3겹의 배열에 쌓인 좌표 데이터를 가져오기 위해 배열 벗겨내기
+
+ const getCoordinates = dongData[0].coordinate.coordinates;
+//우선 좌표를 가지고 있는 coordinates 객체에 접근하기
+//getCoordinates = [[[[x축 좌표, y축 좌표]]]]
+
+ const getPath = getCoordinates[0][0];
+//getPath = [[x축 좌표, y축 좌표]]
+
+ let newpaths = [];
+
+  getPath.forEach(coordinate => {
+    newpaths.push(new navermaps.LatLng(coordinate[1], coordinate[0]));
+  });
+
+  if (newpaths.length === 0) return;
+```
+
+`forEach`를 통해서 배열 안에 각각의 요소 즉 `getPath`에서 각각의 요소는 x축 좌표와 y축 좌표가 할당된 배열이 된다.
+
+각각의 요소를 `forEach`를 통해서 `new navermaps.LatLng(y축, x축)` 으로 객체를 생성한다.
+
+>📢 왜 인지 모르겠지만 해당 객체는 y축이 먼저 작성되고 그 다음 x축이 작성되어야 한다.
+x축, y축 순서대로 작성했더니 안돼서 왜 안되지 하고 있다가 위치를 수정하니 바로 구현되었다....
+따라서 `new navermaps.LatLng(coordinate[1], coordinate[0])`📢
+
+이때 `push` 메서드로 정의한 `newpaths` 빈 배열에 추가한다.
+
+결과적으로 `newpaths` 에는 아래의 값들이 담기고 네이버에서 제공한 로직에 따라 해당 값들이 지도에 표시된다.
+
+<br/>
+
+#### ⛳ 좌표 데이터 나타내기 위해서 map 함수 사용
+
+```js
+  return (
+    <NaverMap
+      id="react-naver-maps-introduction"
+      style={{ width: '100%', height: '90vh', borderTop: 'transparent' }}
+      defaultCenter={{ lat: 37.497175, lng: 127.027926 }}
+      defaultZoom={13}
+    >
+      {dongData.map(input => (
+        <Marker
+          key={input.regions_code}
+          position={
+            new navermaps.LatLng(input.x_coordinate, input.y_coordinate)
+          }
+          animation={2}
+          icon={{
+            content: `<div class="markerBox">
+            <h1 class="markerCountText">${input.count}</h1>
+            <p class="markerText">${input.ub_myeon_dong}</p>
+            </div>`,
+          }}
+        />
+      ))}
+      <Polyline
+        clickable={true}
+        strokeColor="rgb(17, 135, 207)"
+        strokeStyle="solid"
+        strokeWeight={2}
+        path={newpaths}
+      />
+      <Polygon
+        fillColor="rgb(17, 135, 207)"
+        fillOpacity={0.35}
+        clickable={true}
+        paths={newpaths}
+      />
+    </NaverMap>
+  );
+```
+
+하드 코딩이었던 Marker 또한 dongData에서 데이터를 불러와 `position` 속성으로 위치를 잡아준다.
+
+`Polyline`의 `path` 속성에 `newpaths`를 부여한다.
+
+폴리라인과 폴리곤 각각 같은 좌표값을 공유하기 때문에 `Polygon`의 `paths` 속성에도 `newpaths`를 부여한다.
+
+<br/>
+
+결과물
+
+<img src="https://velog.velcdn.com/images/joahkim/post/4af06b1a-c156-4576-ae5f-1d2a7ad3eaae/image.png" width="500" height="300"/>
+
+사실 모든 동의 폴리라인과 폴리곤이 나타나는게 정상이다.
+
+하지만 바로 hover 될 때 폴리라인과 폴리곤이 나타나도록 함수를 수정했기 때문에 위의 이미지는 수정본이다.
+
+<br/>
+
+#### ⛳ 생각보다 헷갈렸던 배열 벗겨내기
+
+GeoJson 파일 형식은 좌표 배열을 3겹의 배열로 감싸기 때문에 좌표를 얻어내기 위해서는 겹겹의 배열을 벗겨야했다. `getCoordinates[0][0][0]` 하며 모든 배열을 벗겨버리기도 했으며 덜 벗겨서 `forEach`에서 에러도 만났다.
+
+`new navermaps.LatLng(coordinate[1], coordinate[0])` 에서 많은 시간을 뺏겼다. 여깃 안풀릴 때는 구글링이다. 수많은 개발자들이 나와 같은 문제를 겪었기 때문에 검색하면 반대로 작성하라고 명시되어 있다.
