@@ -1242,7 +1242,9 @@ const Header = () => {
 하지만 marker 자체를 map을 돌렸기 때문에 1번 marker를 클릭하면 1,2,3 marker 각각에 대한 circle을 모두 그린다.
 
 나는 1번 marker에 해당하는 circle만 띄우고 싶다.
+
 <img src="https://velog.velcdn.com/images/joahkim/post/d44dfe9f-a547-4f09-b408-fec241eec879/image.png" width="500" height="300"/>
+
 문제의 모든 서클 나타내기
 
 <br/>
