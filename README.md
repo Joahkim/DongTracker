@@ -1340,7 +1340,7 @@ marker에는 고유의 id 값이 있다.
 데이터는 1번 marker에 해당하는 데이터가 들어가지!
 `data.x_coordinate, data.y_coordinate` 여기에도 1번 marker에 해당하는 좌표가 들어가게 되고  circle의 center에도 똑같은 좌표가 나올 것이다.
 
-그니깐 배열의 첫번째 요소를 순환할 때의 데이터만 들어가지게 되는 것!
+따라서 배열의 첫번째 요소를 순환할 때의 데이터만 들어가지게 된다.
 
 
 `onClick={() => handleClickMarker(data)}`
