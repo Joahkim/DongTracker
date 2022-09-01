@@ -51,7 +51,7 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 
 #### 2. Trello
 
-![Trello](https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png)
+<img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="300" height="200"/>
 
 4주차의 Sprint 목표와 업무 진행을 파악하기 위한 Tool로 Trello를 사용
 
