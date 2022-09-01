@@ -5,7 +5,7 @@
 
 ## 프로젝트 소개
 
-![3rd_logo](https://user-images.githubusercontent.com/50426259/187815562-0961ccb5-db34-40b7-8c7e-51313d8ab93b.png)
+<img src= "https://user-images.githubusercontent.com/50426259/187815562-0961ccb5-db34-40b7-8c7e-51313d8ab93b.png width="200" height="100"/>
 
 - 매장 점주를 주 소비자 층으로 타겟한 서울시(강남구, 서초구) 동단위별 배달 건수, 매출 데이터 비교 서비스 
   <br/>
