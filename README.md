@@ -96,5 +96,57 @@ QnA : Tech Lead에게 질의응답 소통 티켓
 
 ## :: 구현 사항 설명
 
+### 1. Naver Map 사용하기
+공식 문서 [Naver Maps JavaScript API v3](https://navermaps.github.io/maps.js.ncp/)에서 확인할 수 있듯 리액트에서 JSX 형태롤 작성하기 위해서는 따로 라이브러리 설치가 요구되었다.
+공식 문서를 통해 속성 및 기능에 대해 참고하고 `npm install react-naver-maps` 진행하였다.
+
+<br/>
+
+#### ⛳ 자바스크립트 참고하며 React 컴포넌트 만들기
+👉 Naver Map Javascript v3에서 제공하는 자바스크립트로 Map 이용하는 방법
+
+```js
+var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.3595704, 127.105399),
+    zoom: 15
+});
+```
+
+👉 Naver Map Javascript v3에서 제공하는 자바스크립트로 Map 코드를 라이브러리를 통해 React에서 사용하는 방법
+
+```js
+import {
+  RenderAfterNavermapsLoaded,
+  NaverMap,
+} from 'react-naver-maps';
+import './Map.scss';
+
+const Map = () => {
+  return (
+    <RenderAfterNavermapsLoaded
+      ncpClientId="네이버 클라우드 플랫폼에서 제공한 client key"
+      error={<p>Maps Load Error</p>}
+      loading={<p>Maps Loading...</p>}
+    >
+      <NaverMapAPI />
+    </RenderAfterNavermapsLoaded>
+  );
+};
+
+const NaverMapAPI = () => {
+
+  return (
+   <>
+    <NaverMap
+      id="react-naver-maps-introduction"
+      style={{ width: '100%', height: '90vh'}}
+      defaultCenter={{ lat: 37.497175, lng: 127.027926 }}
+      //초기 화면 지도의 중앙 좌표
+      defaultZoom={13}
+	  //축소, 확대 기준
+    >
+    </NaverMap>
+   </>
+```
 
 
