@@ -296,6 +296,8 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 ```
 
 ```SCSS
+/*SCSS*/
+
 @import '/src/styles/variables.scss';
 
 .markerBox {
