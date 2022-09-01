@@ -13,7 +13,7 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 
   <br/>
 
-### 데모 영상
+### 프로젝트 영상
 
 👉 [영상 보러가기](https://youtu.be/VTUndrwlGDY)
 
@@ -57,26 +57,26 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 
 <img src = "https://user-images.githubusercontent.com/50426259/187819953-738ce774-ef39-49b9-949e-76f65e67f336.png" width="500" height="300"/>
 
-4주차의 Sprint 목표와 업무 진행을 파악하기 위한 Tool로 Trello를 사용
+매주 Sprint 목표와 업무 진행을 파악하기 위한 Tool로 Trello를 사용
 
-Todo : Front-end, Back-end 각각의 업무를 나누어 전체적으로 해야할 일 기록한 티켓
+- Todo : Front-end, Back-end 각각의 업무를 나누어 전체적으로 해야할 일 기록한 티켓
 
-nth Sprint :  일주일을 기준으로 진행해야 할 업무 티켓
+- nth Sprint :  일주일을 기준으로 진행해야 할 업무 티켓
 
-Doing : 현재 개발 중인 업무 티켓
+- Doing : 현재 개발 중인 업무 티켓
 
-Done : 브랜치 merge 완료되고 정상적으로 작동하는 기능
+- Done : 브랜치 merge 완료되고 정상적으로 작동하는 기능
 
-Blocker : 개발의 속도가 더디거나, 해결해야하는 문제 기록
+- Blocker : 개발의 속도가 더디거나, 해결해야하는 문제 기록
 
-QnA : Tech Lead에게 질의응답 소통 티켓
+- QnA : Tech Lead에게 질의응답 소통 티켓
 
 #### 3. Notion
 
 <img src = "https://user-images.githubusercontent.com/50426259/187820728-a900fdb3-1d83-438c-80c9-8876c0182bbf.png" width="500" height="300"/>
 
 
-- 아침 standup meeting 상의한 내용을 모두 회의록에 기록
+- 업무 시작 전 standup meeting 상의한 내용을 모두 회의록에 기록
 
 - 공유해야 하는 얘기는 구두가 아니라 notion을 통해 정확히 전달
 
