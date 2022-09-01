@@ -1129,18 +1129,31 @@ export default Header;
 >#### 결과물
 
 초기화면
+
 <img src="https://velog.velcdn.com/images/joahkim/post/db697975-3641-463a-9895-e90a81d46e47/image.png" width="500" height="300"/>
+
 A매장클릭
+
 <img src="https://velog.velcdn.com/images/joahkim/post/bf679c5e-ae70-4428-8e67-73136fedaf56/image.png" width="500" height="300"/>
+
 B매장클릭
+
 <img src="https://velog.velcdn.com/images/joahkim/post/cc61284c-7ad0-4bc2-bab4-2b3ccfeea893/image.png" width="500" height="300"/>
+
 C매장클릭
+
 <img src="https://velog.velcdn.com/images/joahkim/post/151c607d-0e3c-49f7-a319-fcbfca0c4e96/image.png" width="500" height="300"/>
+
 배달의 민족 클릭
+
 <img src="https://velog.velcdn.com/images/joahkim/post/31fb15ba-b401-4ccf-99c2-9b2b4062dc21/image.png" width="500" height="300"/>
+
 요기요 클릭
+
 <img src="https://velog.velcdn.com/images/joahkim/post/9fd2c852-6942-4ad2-9d1c-90cd2ea8056a/image.png" width="500" height="300"/>
+
 매장과 플랫폼 버튼 클릭 시
+
 <img src="https://velog.velcdn.com/images/joahkim/post/e916ba08-afb7-4878-a445-4865cc420b55/image.png" width="500" height="300"/>
 
 ---
@@ -1170,7 +1183,9 @@ C매장클릭
 `hooks` 폴더에 `custom hooks`를 작성하면 된다.
 
 **useFilter.js** 파일을 보면 필터링을 위해 작성된 코드이다.
+
 <img src="https://velog.velcdn.com/images/joahkim/post/913db1b1-9150-4b10-9a5a-05b1b94f872a/image.png" width="500" height="300"/>
+
 해당 코드들은 사실 **Header.js**에 작성되어도 된다. 하지만 하나의 컴포넌트 안에 복잡하고 길어지는 코드가 작성되어 있다면 가독성이 떨어지게 된다.
 
 추후 **useFilter hook**을 다른 컴포넌트에도 사용할 수 있다.
@@ -1648,6 +1663,7 @@ m인지 km인지 정확하지 않으며 배열에 거리값이 담기지 않았�
 추후 이 부분을 라이브러리가 아닌 단순한 함수로 적용해보려고 한다.
 
 또한 자세히 보면 pin이 circle을 살짝 삐져나가는데 이것 또한 CSS적으로 수정할 수 있는 부분인지 공부해보자
+
 <img src="https://velog.velcdn.com/images/joahkim/post/bd252bdd-124e-4cf7-b8fc-1f58286bae45/image.png" width="500" height="300"/>
 
 ---
