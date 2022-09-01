@@ -1121,31 +1121,31 @@ export default Header;
 
 초기화면
 
-<img src="https://velog.velcdn.com/images/joahkim/post/db697975-3641-463a-9895-e90a81d46e47/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/db697975-3641-463a-9895-e90a81d46e47/image.png" width="400" height="300"/>
 
 A매장클릭
 
-<img src="https://velog.velcdn.com/images/joahkim/post/bf679c5e-ae70-4428-8e67-73136fedaf56/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/bf679c5e-ae70-4428-8e67-73136fedaf56/image.png" width="400" height="300"/>
 
 B매장클릭
 
-<img src="https://velog.velcdn.com/images/joahkim/post/cc61284c-7ad0-4bc2-bab4-2b3ccfeea893/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/cc61284c-7ad0-4bc2-bab4-2b3ccfeea893/image.png" width="400" height="300"/>
 
 C매장클릭
 
-<img src="https://velog.velcdn.com/images/joahkim/post/151c607d-0e3c-49f7-a319-fcbfca0c4e96/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/151c607d-0e3c-49f7-a319-fcbfca0c4e96/image.png" width="400" height="300"/>
 
 배달의 민족 클릭
 
-<img src="https://velog.velcdn.com/images/joahkim/post/31fb15ba-b401-4ccf-99c2-9b2b4062dc21/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/31fb15ba-b401-4ccf-99c2-9b2b4062dc21/image.png" width="400" height="300"/>
 
 요기요 클릭
 
-<img src="https://velog.velcdn.com/images/joahkim/post/9fd2c852-6942-4ad2-9d1c-90cd2ea8056a/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/9fd2c852-6942-4ad2-9d1c-90cd2ea8056a/image.png" width="400" height="300"/>
 
 매장과 플랫폼 버튼 클릭 시
 
-<img src="https://velog.velcdn.com/images/joahkim/post/e916ba08-afb7-4878-a445-4865cc420b55/image.png" width="500" height="300"/>
+<img src="https://velog.velcdn.com/images/joahkim/post/e916ba08-afb7-4878-a445-4865cc420b55/image.png" width="400" height="300"/>
 
 ---
 
@@ -1361,7 +1361,7 @@ const handleClickMarker = marker => {
 
 `setOpenCircle`은 그냥 모달창 열었다 닫았다 하는 것
 
-<img src="https://velog.velcdn.com/images/joahkim/post/05aa4b82-4a21-4179-806d-fb5680724e43/image.gif" width="500" height="300"/>
+<img src="https://user-images.githubusercontent.com/50426259/187915600-ddddb9c8-7399-45a1-97cf-c00771d8d7eb.png" width="500" height="300"/>
 
 <br/>
 
