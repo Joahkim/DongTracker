@@ -97,7 +97,7 @@ DongTracker는 매장 점주를 주 소비자 층으로 매장의 매출을 서�
 ## :: 구현 사항 설명
 
 ### 1. Naver Map 사용하기
-공식 문서 [Naver Maps JavaScript API v3](https://navermaps.github.io/maps.js.ncp/)에서 확인할 수 있듯 리액트에서 JSX 형태롤 작성하기 위해서는 따로 라이브러리 설치가 요구되었다.
+공식 문서 [Naver Maps JavaScript API v3](https://navermaps.github.io/maps.js.ncp/)에서 확인할 수 있듯 리액트에서 작성하기 위해서는 따로 라이브러리 설치가 요구되었다.
 공식 문서를 통해 속성 및 기능에 대해 참고하고 `npm install react-naver-maps` 진행하였다.
 
 <br/>
@@ -112,7 +112,7 @@ var map = new naver.maps.Map('map', {
 });
 ```
 
-👉 Naver Map Javascript v3에서 제공하는 자바스크립트로 Map 코드를 라이브러리를 통해 React에서 사용하는 방법
+👉 Naver Map Javascript v3에서 Map 코드 라이브러리를 통해 React에서 사용하는 방법
 
 ```js
 //npm install react-naver-maps 설치
@@ -488,14 +488,14 @@ export default Map;
 
 <br/>
 
-'1배열 1꼭지점' 이라며 `[[[[x축 좌표, y축 좌표]]]]`로 GeoJson 파일 형식을 이용하여 지도에 Marker를 나타낼 수 있었다.
+'1배열 1꼭지점' 을 코드로 나타내면 `[[[[x축 좌표, y축 좌표]]]]`로 GeoJson 파일 형식을 이용하여 지도에 Marker를 나타낼 수 있었다.
 
 Marker는 중심이 되는 좌표가 있다면 하나의 `[[[[x축 좌표, y축 좌]표]]]` 코드만 있어도 나타낼 수 있다.
 
 폴리곤과 폴리라인 (Polygon, Polyline)은 하나의 꼭지점들을 이어서 선을 그리고(폴리라인) 그 선의 내부 영역(폴리곤)을 스타일링 할 수 있다.
 
 **오늘의 작업**
-서울시 강남구, 서초구의 동을 폴리라인과 폴리곤으로 나타내기!
+서울시 강남구, 서초구의 동을 폴리라인과 폴리곤으로 나타내기
 
 강남구에는 압구정, 신사, 삼성, 대치, 역삼동 등이 소재하고 있으며
 서초구에는 방배, 서초, 반포동 등이 소재하고 있다.
@@ -504,7 +504,7 @@ Marker는 중심이 되는 좌표가 있다면 하나의 `[[[[x축 좌표, y축 
 
 #### ⛳ 동의 경계선을 나타내는 폴리라인 좌표는 어떻게 구할까?
 
-프론트 엔드 입장으로 보면 백에서 보내주는 데이터를 잘 표현하기만 하면 된다. 하지만 도시의 공적인 데이터는 보통 공공API로부터 제공받고 있지 않을까 궁금하여 검색하기!
+프론트 엔드 입장으로 보면 백에서 보내주는 데이터를 UI적으로 표현한다. 하지만 도시의 공적인 데이터는 보통 공공API로부터 제공받고 있지 않을까 궁금하여 검색했다.
 
 구글에 '대한민국 법정동 및 행정동 좌표'라고 검색하면 JSON 파일을 제공하는 블로그 및 공공 데이터 관련 웹 페이지에서 찾을 수 있다.
 
@@ -565,7 +565,6 @@ Marker는 중심이 되는 좌표가 있다면 하나의 `[[[[x축 좌표, y축 
 
 #### ⛳ Naver Map에서 폴리라인과 폴리곤을 나타내는 객체
 
-위의 링크에서 첨부된 지난 게시글에서 React로 naver map 폴리곤, 폴리라인 나타내는 형태에 대해 언급했다.
 
 ```js
  	<Polyline
@@ -657,7 +656,7 @@ function NaverMapAPI() {
 각각의 요소를 `forEach`를 통해서 `new navermaps.LatLng(y축, x축)` 으로 객체를 생성한다.
 
 >📢 왜 인지 모르겠지만 해당 객체는 y축이 먼저 작성되고 그 다음 x축이 작성되어야 한다.
-x축, y축 순서대로 작성했더니 안돼서 왜 안되지 하고 있다가 위치를 수정하니 바로 구현되었다....
+x축, y축 순서대로 작성했더니 안돼서 왜 안되지 하고 있다가 위치를 수정하니 바로 구현되었다.
 따라서 `new navermaps.LatLng(coordinate[1], coordinate[0])`📢
 
 이때 `push` 메서드로 정의한 `newpaths` 빈 배열에 추가한다.
@@ -716,7 +715,7 @@ x축, y축 순서대로 작성했더니 안돼서 왜 안되지 하고 있다가
 
 <br/>
 
-결과물
+> #### 결과물
 
 <img src="https://velog.velcdn.com/images/joahkim/post/4af06b1a-c156-4576-ae5f-1d2a7ad3eaae/image.png" width="500" height="300"/>
 
@@ -777,8 +776,7 @@ const usePolygon = () => {
 export default usePolygon;
 ```
 
-- 폴리곤과 폴리라인을 그리기 위해서 배열을 벗겨낸 후 좌표 데이터를 
-`new navermaps.LatLng()` 객체를 통해서 지도에 그려낼 수 있다.
+- 폴리곤과 폴리라인을 그리기 위해서 배열을 벗겨낸 후 좌표 데이터를 `new navermaps.LatLng()` 객체를 통해서 지도에 그려낼 수 있다.
 
 - `handleHoverCoordinate` 함수를 통해 hover 되는 marker의 data를 인수로 받아 해당 data의 좌표값만 추출해 `poly`에 할당한다.
 
@@ -796,7 +794,7 @@ export default usePolygon;
 
 ---
 
-### ⛳ hover 시 폴리곤, 폴리라인 나타내기
+#### ⛳ hover 시 폴리곤, 폴리라인 나타내기
 
 우선 **usePolygon**을 사용하기 위해서 사용할 곳에서 import한다.
 
@@ -857,15 +855,17 @@ function NaverMapAPI({ dongData }) {
 
 `dongData`에는 Marker의 정보, Polygon, Polyline 정보가 모두 담겨있다.
 
+<br/>
+
 **📢 Naver Map에서 hover 이벤트는 `onMouseover`이다. `onMouseOver`라고 작성하면 작동하지 않는다📢**
 
-> 과정 정리하기
+> #### 과정 정리하기
 
 1. 역삼동 Marker에 `mouseover` 시 역삼동 좌표의 폴리곤과 폴리라인이 그려져야 한다. 역삼동의 좌표 데이터를 넘겨준다.
 
 	- `onMouseover` 의 콜백함수로 usePloygon hook에서 `import` 한 `handleHoverCoordinate` 함수를 작성한다.
     
-    - 전달되는 인자는 `dongData`의 input 즉, 각각의 데이터이다.
+	- 전달되는 인자는 `dongData`의 input 즉, 각각의 데이터이다.
     
 ```js
   const handleHoverCoordinate = data => {
@@ -881,12 +881,11 @@ function NaverMapAPI({ dongData }) {
 2. Marker에 `mouseover` 될 때 폴리곤과 폴리라인이 생성되고 `mouseout`되면 생성되지 않는다.
 
 	- 모달창과 원리는 같다. 조건부 연산자를 사용하여 true 라면 폴리라인과 폴리곤이 보여지게 되고 false라면 보이지 않게 된다.
+    	- `const [isMouseOn, setIsMouseOn] = useState(false);`
     
-    - `const [isMouseOn, setIsMouseOn] = useState(false);`
+    	- 초기값은 `mouseover` 되지 않은 상태에는 보이지 않기 때문에 false 값
     
-    - 초기값은 `mouseover` 되지 않은 상태에는 보이지 않기 때문에 false 값
-    
-    - `mouseover`되면 `isMouseOn`은 `true` 값을 가져 폴리곤과 폴리라인이 그려진다.
+    	- `mouseover`되면 `isMouseOn`은 `true` 값을 가져 폴리곤과 폴리라인이 그려진다.
     
 ```js
  {isMouseOn && (
@@ -909,7 +908,7 @@ function NaverMapAPI({ dongData }) {
 
 ```
 
-> 결과
+> #### 결과
 
 <img src="https://velog.velcdn.com/images/joahkim/post/b1a14413-42db-4a25-a32e-449a14d0a1e5/image.gif" width="500" height="300"/>
 
@@ -1020,16 +1019,11 @@ export default Main;
 
 - 서버에서 Query String으로 데이터를 GET 방식으로 요청하라고 했기에 `url` 즉, `location.search`을 그대로 보낸다.
 
-- 받은 데이터는 그대로 `dongData` state에 저장하여 **Header.js, Map.js**에 넘겨준다.
+- 받은 데이터는 그대로 `dongData`를 `state`에 저장하여 **Header.js, Map.js**에 넘겨준다.
 
 <br/>
 
 > #### 📢 Blocker!!
- 
-local Storage에 토큰이 있다면 로그인 버튼을 사용자 이미지로 변경.
-이때 업데이트 되는 `state`가 없기 때문에 UI가 변경되지 않아 강제로 새로고침을 했었다.(Nav바여서 Router에 속하지 않았음)
-
-비슷한 문제가 발생했다
 
 초기화면에서 매장, 플랫폼, 전체버튼을 2번 눌러야 지도에 알맞게 마커가 표시된다. 첫번째 눌렀을 때 주소창에는 해당하는 Query String이 데이터를 잘 요청하고 있었다. dongData에도 버튼에 따른 정확한 데이터가 저장되었다. 문제는 UI가 변경되지 않는다. 의존성 배열에 `dongData`를 명시해도 비동기적으로 동작하기 때문에 문제를 해결하지 못했다.
 
@@ -1127,7 +1121,7 @@ export default Header;
 
 <br/>
 
->#### 결과물
+> #### 결과물
 
 초기화면
 
@@ -1163,7 +1157,7 @@ C매장클릭
 
 ### 8. custom hooks 생성하고 활용하기
 
-개인적으로 custom hook을 사용하면서 큰 장점은 딱 2가지였다.
+개인적으로 custom hook을 사용하면서 큰 장점은 2가지였다.
 
 1. 코드의 가독성을 높여준다.
 
@@ -1177,7 +1171,7 @@ C매장클릭
 
 <br/>
 
-### ⛳ custom hook 만들기
+#### ⛳ custom hook 만들기
 
 먼저 `src` 폴더 내부에 `hooks` 폴더를 생성한다. 
 
@@ -1193,7 +1187,7 @@ C매장클릭
 
 ---
 
-### ⛳ 작성법
+#### ⛳ 작성법
 
 컴포넌트 생성하는 방법과 동일하다!
 
@@ -1225,7 +1219,7 @@ export default useFilter;
 
 --- 
 
-### ⛳ 사용법
+#### ⛳ 사용법
 
 `useFilter`를 사용할 곳에 `import`한 후 구조분해할당으로 선언하면 끝!
 
@@ -1327,7 +1321,8 @@ return (
 - Circle 컴포넌트는 `selectedMarkerId`와 marker의 `id`가 일치하면 지도에 그려진다.
 
 
->#### 정리하면
+> #### 정리하면
+
 1번 매장 marker의 id 값이 1
 클릭하면 해당 id 값이 `selectedMarkerId`에 저장 `selectedMarkerId = 1`
 
@@ -1345,7 +1340,7 @@ marker에는 고유의 id 값이 있다.
 
 여기서 circle에는 `id` 값이 없다. 그럼 어떻게 알고 1번 marker에 해당하는 circle이 나타날까
 
-일단 map 함수가 돌아갈때 먼저 첫번째 배열의 요소가 들어가지?
+일단 map 함수가 돌아갈때 먼저 첫번째 배열의 요소가 들어가게된다.
 
 데이터는 1번 marker에 해당하는 데이터가 들어가지!
 `data.x_coordinate, data.y_coordinate` 여기에도 1번 marker에 해당하는 좌표가 들어가게 되고  circle의 center에도 똑같은 좌표가 나올 것이다.
@@ -1367,7 +1362,7 @@ const handleClickMarker = marker => {
 
 `selectedMarkerId` 값과 클릭한 `marke`r의 `id` 값은 무조건 똑같을 수 밖에
 
-만약 같다면 해당 데이터가 들어가져있는 `circle`을 나타내는 것!!!!
+만약 같다면 해당 데이터가 들어가져있는 `circle`을 나타내는 것이다.
 
 `setOpenCircle`은 그냥 모달창 열었다 닫았다 하는 것
 
@@ -1598,7 +1593,7 @@ const [deliveryData, setDeliveryData] = useState([]);
 
 지금 `fetch`를 작성해서 받아온 데이터도 어차피 배열이니 바로 `filter`를 돌리자
 
-그랬더니...처음부터 데이터가 담기면서 데이터가 밀려서 나오지 않고 제대로 나온다. 
+그랬더니 처음부터 데이터가 담기면서 데이터가 밀려서 나오지 않고 제대로 나온다. 
 
 결과적으로 처음에 서버에서 데이터를 받아올 때 `state`에 저장하는 것이 아니라 `data`라는 변수에 저장하고 해당 변수를 바로 `filter`를 적용하여 원하는 데이터만 뽑아내 사용한다.
 
@@ -1782,20 +1777,20 @@ export default PieChartComponent;
 
 ```
 
-- 시간대별 데이터를 나타내기 위해 PieChart를 사용했다.
+👉 시간대별 데이터를 나타내기 위해 PieChart를 사용했다.
 
 
-> `Legend` 는 범례를 나타낸다
+- `Legend` 는 범례를 나타낸다
 
 
-> `Cell`은 Pie 모양의 Chart 자체에 스타일링을 주기 위해서 적용했다.
+- `Cell`은 Pie 모양의 Chart 자체에 스타일링을 주기 위해서 적용했다.
 
 
-> `Tooltip`은 차트에 마우스를 올리면 상세 데이터를 보여준다.
+- `Tooltip`은 차트에 마우스를 올리면 상세 데이터를 보여준다.
 
 
 
-> `return`문 위의 함수와 변수는 기본적으로 제공하지만 커스터마이징 하기 위해서 값을 조금씩 바꿔나가면 원하는대로 스타일링을 할 수 있다.
+- `return`문 위의 함수와 변수는 기본적으로 제공하지만 커스터마이징 하기 위해서 값을 조금씩 바꿔나가면 원하는대로 스타일링을 할 수 있다.
 
 <br/>
 
