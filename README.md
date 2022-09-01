@@ -115,6 +115,8 @@ var map = new naver.maps.Map('map', {
 👉 Naver Map Javascript v3에서 제공하는 자바스크립트로 Map 코드를 라이브러리를 통해 React에서 사용하는 방법
 
 ```js
+//npm install react-naver-maps 설치
+
 import {
   RenderAfterNavermapsLoaded,
   NaverMap,
@@ -148,5 +150,187 @@ const NaverMapAPI = () => {
     </NaverMap>
    </>
 ```
+
+<br/>
+
+### 2. GeoJSON 이해하고 좌표 데이터 활용하기
+> GeoJSON(지오제이슨)은 위치정보를 갖는 점을 기반으로 체계적으로 지형을 표현하기 위해 설계된 개방형 공개 표준 형식이다. 이것은 JSON인 자바스그립트 오브젝트 노테이션(Object Notation)을 사용하는 파일 포맷이다. _위키피디아_
+
+지도를 활용하는 프로젝트를 진행하다보니 장소에 대한 좌표가 필요하다.
+데이터를 받아올 때 또는 넘겨줄 때, 좌표 데이터에 대하여 이해해야 했다.
+
+
+<br/>
+
+#### ⛳ 1배열 1꼭지점
+
+<br />
+
+👉 정확한 위치 즉, Marker에 대한 데이터
+
+```js
+{"type" : "Point",
+  "coordinates" : [127.00784616,37.49190083]}
+```
+
+하나의 배열 안에 2개의 요소 ▶️ 하나의 꼭지점
+
+---
+
+<br/> 
+
+### 3. Naver Map에 Marker 나타내기
+
+<br />
+
+#### ⛳ Marker 표시하기
+
+`react-naver-maps`에서 기본적으로 제공하는 <Marker/> 컴포넌트를 `import` 한다.
+
+네이버 맵 공식문서에서 제공하는 다양한 속성을 파악한다.
+
+```js
+import React, { useEffect, useState } from 'react';
+import './Map.scss';
+
+import {
+  RenderAfterNavermapsLoaded,
+  NaverMap,
+  Marker,
+} from 'react-naver-maps';
+
+function NaverMapAPI() {
+  const navermaps = window.naver.maps;
+
+  const [mydata, setMyData] = useState([]);
+
+  useEffect(() => {
+    fetch('/data/lineTwo.json')
+      .then(res => res.json())
+      .then(data => {
+        setMyData(data.line);
+      });
+  }, []);
+
+  if (mydata.length === 0) return;
+
+  return (
+    <NaverMap
+      id="react-naver-maps-introduction"
+      style={{ width: '100%', height: '90vh', borderTop: 'transparent' }}
+      defaultCenter={{ lat: 37.497175, lng: 127.027926 }}
+      defaultZoom={14}
+    >
+      {mydata.map(input => (
+        <Marker
+          key={input.station}
+          position={new navermaps.LatLng(...input.code)}
+          animation={2}
+		  title={input.station}
+          icon={{
+            content: 
+                `<button class="markerBox">
+                <div class="totalOrder">${input.order}</div>
+                ${input.station}</button>`,
+          	}}
+        />
+      ))}
+    </NaverMap>
+  );
+}
+
+const Map = () => {
+  return (
+    <RenderAfterNavermapsLoaded
+      ncpClientId="발급받은 client key"
+      error={<p>Maps Load Error</p>}
+      loading={<p>Maps Loading...</p>}
+    >
+      <NaverMapAPI />
+    </RenderAfterNavermapsLoaded>
+  );
+};
+
+export default Map;
+```
+<br/>
+
+- position : Marker가 표시될 좌표
+
+- icon : Marker의 아이콘 커스터마이징(스타일은 scss로 진행)
+
+- title : Marker가 가지고 있는 기본적인 Marker 이름
+
+- animation : Marker가 나타날 때 보여지는 애니메이션(1,2,3)
+
+- new navermaps.LatLng(...input.code) 좌표를 그려주는 메서드
+
+네이버 지도에서 기본적으로 제공하는 좌표를 화면에 나타내는 메서드는 위와 같다. -new navermaps.LatLng([x축 좌표, y축 좌표])-의 기본값에서 Mockdata의 데이터를 map 함수를 통해 구현했다.
+
+<br/>
+
+**Mockdata**
+MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부를 가져와서 작성했다.
+
+```js
+{
+  "line": [
+    { "order": 11, "station": "잠실새내", "code": [37.511687, 127.086162] },
+    { "order": 23, "station": "종합운동장", "code": [37.510997, 127.073642] },
+    { "order": 1456, "station": "삼성", "code": [37.508844, 127.06316] },
+    { "order": 71, "station": "선릉", "code": [37.504503, 127.049008] },
+    { "order": 1341, "station": "역삼", "code": [37.500622, 127.036456] },
+    { "order": 65, "station": "강남", "code": [37.497175, 127.027926] },
+    { "order": 333, "station": "교대", "code": [37.493415, 127.01408] },
+    { "order": 575, "station": "방배", "code": [37.481426, 126.997596] },
+    { "order": 3, "station": "사당", "code": [37.47653, 126.981685] },
+    { "order": 578, "station": "신대방", "code": [37.487462, 126.913149] },
+    {
+      "order": 976,
+      "station": "구로디지털단지",
+      "code": [37.485266, 126.901401]
+    },
+    { "order": 1343, "station": "신도림", "code": [37.508725, 126.891295] },
+    { "order": 2345, "station": "문래", "code": [37.517933, 126.89476] }
+  ]
+}
+```
+
+```SCSS
+@import '/src/styles/variables.scss';
+
+.markerBox {
+  padding-left: 25px;
+  position: relative;
+  width: 85px;
+  height: 30px;
+  font-size: 5px;
+  background-color: yellow;
+  border-radius: 35px;
+
+  .totalOrder {
+    text-align: center;
+    line-height: 30px;
+    width: 25px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+  }
+}
+```
+결과물
+
+![](https://velog.velcdn.com/images/joahkim/post/2afda268-aa5f-466d-b3a5-23548c554588/image.gif)
+
+---
+
+<br/>
+
+
+
 
 
