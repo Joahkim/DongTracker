@@ -323,7 +323,7 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 ```
 결과물
 
-![image](https://user-images.githubusercontent.com/50426259/187876303-682dded3-3912-4ac3-a967-16295673602a.png)
+<img src = "https://user-images.githubusercontent.com/50426259/187876303-682dded3-3912-4ac3-a967-16295673602a.png" width="500" height="300'>
 
 ---
 
