@@ -295,7 +295,7 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 }
 ```
 
-```SCSS
+```css
 /*SCSS*/
 
 @import '/src/styles/variables.scss';
@@ -331,6 +331,162 @@ MockData는 공공 API에서 제공하는 서울역 지하철 2호선의 일부�
 
 <br/>
 
+
+### 3. Naver Map 폴리곤, 폴리라인 React로 나타내기
+
+<br/>
+
+#### ⛳ 네이버 맵 공식문서 코드
+
+```js
+var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.3674001, 127.1181196),
+    zoom: 14
+});
+
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(37.37544345085402, 127.11224555969238),
+            new naver.maps.LatLng(37.37230584065902, 127.10791110992432),
+            new naver.maps.LatLng(37.35975408751081, 127.10795402526855),
+            new naver.maps.LatLng(37.359924641705476, 127.11576461791992),
+            new naver.maps.LatLng(37.35931064479073, 127.12211608886719),
+            new naver.maps.LatLng(37.36043630196386, 127.12293148040771),
+            new naver.maps.LatLng(37.36354029942161, 127.12310314178465),
+            new naver.maps.LatLng(37.365211629488016, 127.12456226348876),
+            new naver.maps.LatLng(37.37544345085402, 127.11224555969238)
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+var polyline = new naver.maps.Polyline({
+    map: map,
+    path: [
+        new naver.maps.LatLng(37.359924641705476, 127.1148204803467),
+        new naver.maps.LatLng(37.36343797188166, 127.11486339569092),
+        new naver.maps.LatLng(37.368520071054576, 127.11473464965819),
+        new naver.maps.LatLng(37.3685882848096, 127.1088123321533),
+        new naver.maps.LatLng(37.37295383612657, 127.10876941680907),
+        new naver.maps.LatLng(37.38001321351567, 127.11851119995116),
+        new naver.maps.LatLng(37.378546827477855, 127.11984157562254),
+        new naver.maps.LatLng(37.376637072444105, 127.12052822113036),
+        new naver.maps.LatLng(37.37530703574853, 127.12190151214598),
+        new naver.maps.LatLng(37.371657839593894, 127.11645126342773),
+        new naver.maps.LatLng(37.36855417793982, 127.1207857131958)
+    ]
+});
+```
+
+해당 js를 jsx로 바꾸기 위해 작업했다.
+
+- Polyline : 일련의 지도 좌표를 연결하여 선을 그리는 객체
+- Polygon : 일련의 지도 좌표 목록을 잇는 닫힌 다각형
+
+polyline은 테두리를 의미하고 따로 style도 지정가능하다
+polygon은 polyline 안을 채워주는 영역이고 style로 색상지정 가능하다.
+
+지도에 폴리곤을 표시할 수 있게 되었다.
+테스트로 랜덤한 좌표를 작성해서 표현했다.
+
+![](https://velog.velcdn.com/images/joahkim/post/c9626ecf-9057-436b-93cf-0b44764b3c3d/image.png)
+
+<br/>
+
+#### ⛳ React로 polyline, polygon 나타내기
+
+JS로 작성된 공식문서를 참고하여 리액트에서 사용한 코드
+
+```js
+import React, { useEffect, useState } from 'react';
+import './Map.scss';
+
+import {
+  RenderAfterNavermapsLoaded,
+  NaverMap,
+  Marker,
+  Polyline,
+  Polygon,
+} from 'react-naver-maps';
+
+function NaverMapAPI() {
+  const navermaps = window.naver.maps;
+
+
+  return (
+    <NaverMap
+      id="react-naver-maps-introduction"
+      style={{ width: '100%', height: '90vh', borderTop: 'transparent' }}
+      defaultCenter={{ lat: 37.497175, lng: 127.027926 }}
+      defaultZoom={14}
+    >
+      <Marker
+        key={1}
+        position={new navermaps.LatLng(37.497175, 127.027926)}
+        animation={2}
+      />
+      <Polyline
+        clickable={true}
+        strokeColor="blue"
+        strokeStyle="solid"
+        strokeWeight={1}
+        path={[
+          new navermaps.LatLng(37.359924641705476, 127.1148204803467),
+          new navermaps.LatLng(37.36343797188166, 127.11486339569092),
+          new navermaps.LatLng(37.368520071054576, 127.11473464965819),
+          new navermaps.LatLng(37.3685882848096, 127.1088123321533),
+          new navermaps.LatLng(37.37295383612657, 127.10876941680907),
+          new navermaps.LatLng(37.38001321351567, 127.11851119995116),
+          new navermaps.LatLng(37.378546827477855, 127.11984157562254),
+          new navermaps.LatLng(37.376637072444105, 127.12052822113036),
+          new navermaps.LatLng(37.37530703574853, 127.12190151214598),
+          new navermaps.LatLng(37.371657839593894, 127.11645126342773),
+          new navermaps.LatLng(37.36855417793982, 127.1207857131958),
+        ]}
+      />
+      <Polygon
+        fillColor="salmon"
+        fillOpacity={0.35}
+        clickable={true}
+        paths={[
+          new navermaps.LatLng(37.359924641705476, 127.1148204803467),
+          new navermaps.LatLng(37.36343797188166, 127.11486339569092),
+          new navermaps.LatLng(37.368520071054576, 127.11473464965819),
+          new navermaps.LatLng(37.3685882848096, 127.1088123321533),
+          new navermaps.LatLng(37.37295383612657, 127.10876941680907),
+          new navermaps.LatLng(37.38001321351567, 127.11851119995116),
+          new navermaps.LatLng(37.378546827477855, 127.11984157562254),
+          new navermaps.LatLng(37.376637072444105, 127.12052822113036),
+          new navermaps.LatLng(37.37530703574853, 127.12190151214598),
+          new navermaps.LatLng(37.371657839593894, 127.11645126342773),
+          new navermaps.LatLng(37.36855417793982, 127.1207857131958),
+        ]}
+      />
+    </NaverMap>
+  );
+ }
+};
+
+export default Map;
+```
+
+- 폴리라인 (Polyline) : 영역의 테두리
+
+- 폴리곤 (Polygon) : 영역 내부 채워지는 면적
+
+---
+
+<br/>
+
+### 5. Naver Map 좌표 데이터 폴리곤, 폴리라인 나타내기
+
+<br/>
 
 
 
